@@ -23,18 +23,18 @@ class TermReport{
 
     Scanner scanner = new Scanner(System.in);
     TermReport termReport = new TermReport();
-//    while(scanner.hasNextLine()){
-    for(int i = 0; i < 5; i++){
+   while(scanner.hasNextLine()){
 
       System.out.println("User");
-      String user = scanner.next();
+      String line = scanner.nextLine().split("\t");
       System.out.println("node");
-      int node = scanner.nextInt();
+      int node = Integer.parseInt(line[0]);
+      String user = line[1];
       termReport.getMasterArray()[node].addObservation(user);
     }
 
     //report moment
-    for(int i = 0; i < 8 ; i++){ //termReport.getMasterArray().length
+    for(int i = 0; i < termReport.getMasterArray().length ; i++){ //termReport.getMasterArray().length
 
       String print = String.format("%d \t %s",
               termReport.getMasterArray()[i].findMaxUsage().getCount(),
